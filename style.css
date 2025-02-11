@@ -1,1 +1,15 @@
 /* Ceci est un commentaire*/
+.custom-box {
+    border: 2px solid #007bff; /* Bordure bleue */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    background-color: #f8f9fa; /* Fond clair */
+    display: flex; /* Utilise Flexbox pour gérer le placement */
+    justify-content: space-between; /* Place le bouton à droite */
+    align-items: center; /* Centre verticalement */
+}
+
+.btn {
+    cursor: pointer; /* Change le curseur pour montrer que c'est cliquable */
+}

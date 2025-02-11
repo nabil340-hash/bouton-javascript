@@ -22,28 +22,34 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const form= document.getElementById('itemForm');
-        const intemInput= document.getElementById('itemInput');
-        const itemList = document.getElementById('itemList');
-        form.addEventListener('submit'function(event){
-            event.preventDefault();
-            const newItemText = intemInput.value.trime();
-            // Vérifier si l'input n'est pas vide
-            if (newItemText !== "") {
-                // Créer un nouvel élément de liste (li)
-                const newItem = document.createElement('li');
-                newItem.classList.add('list-group-item');
-                newItem.textContent = newItemText;
+        document.getElementById('itemForm').addEventListener('submit', function(event) {
+   event.preventDefault(); // Empêche le rechargement de la page
 
-                // Ajouter le nouvel élément à la liste
-                itemList.appendChild(newItem);
+   let input = document.getElementById('itemInput');
+   let text = input.value.trim(); // Nettoie la saisie
 
-                // Réinitialiser l'input
-                itemInput.value = '';
-            }
-        });
+   if (text !== "") {
+       let li = document.createElement('li'); // Crée un <li>
+       li.textContent = text; // Ajoute le texte à l’élément
+       li.classList.add('list-group-item', 'custom-box'); // Ajoute des classes pour le style
 
+       // Création du bouton "Supprimer"
+       let deleteButton = document.createElement('button');
+       deleteButton.textContent = 'Supprimer';
+       deleteButton.classList.add('btn', 'btn-danger', 'btn-sm', 'ml-2'); // Style du bouton
 
-    </script>
+       // Ajout du bouton "Supprimer" au <li>
+       li.appendChild(deleteButton);
+
+       // Gestion de l'événement de suppression
+       deleteButton.addEventListener('click', function() {
+           li.remove(); // Supprime l'élément <li> de la liste
+       });
+
+       document.querySelector('#itemList').appendChild(li); // Ajoute à la liste
+       input.value = ""; // Vide le champ après ajout
+   }
+});
+   </script>
 </body>
 </html>
